@@ -43,6 +43,8 @@ def main():
 
     y_pred = predict(load_model, test_features)
 
+    print(y_pred)
+
     df = create_answer_format(y_pred, test_data)
 
     name_for_save = os.path.join('data', 'result.tsv')
