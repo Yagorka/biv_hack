@@ -6,9 +6,9 @@ import torch
 import transformers as ppb
 
 from utils import create_features, preprocess_text, predict, create_answer_format
-# from consumer_wrapper import track
+from consumer_wrapper import track
 
-# @track
+@track
 def main():
     try:
         name_tsv_file = glob.glob('data/*.tsv')[0]
@@ -45,7 +45,10 @@ def main():
 
     df = create_answer_format(y_pred, test_data)
 
-    df.to_csv(os.path.join('data', 'result.tsv'), header=False, sep='\t')
+    name_for_save = os.path.join('data', 'result.tsv')
+    df.to_csv(name_for_save, header=False, sep='\t')
+    print(f"Файл {name_for_save} создан")
+
 if __name__ == "__main__":
     main()
 
